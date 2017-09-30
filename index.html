@@ -1,0 +1,946 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta name="renderer" content="ie-comp"> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="renderer" content="ie-stand"
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>video</title>
+		<link rel="stylesheet" href="css/floatphoto.css" />
+		<link rel="stylesheet" href="css/animate.css" />
+		<script src="./js/panoviewer.js"></script>
+		<script src="./js/event_handle.js"></script>
+		
+		
+		<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+<link rel="stylesheet" type="text/css" href="css/nivo-slider.css" media="screen">
+<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript">
+//Slider
+jQuery(window).load(function() {
+	jQuery('#slider').nivoSlider({
+	effect: 'fold',
+	slices:15,
+	animSpeed:500, //Slide transition speed
+	pauseTime:5000,
+	controlNav: false,
+	directionNavHide: false,
+	prevText: 'prev',
+	nextText: 'next',
+	startSlide:0, //Set starting Slide (0 index)
+	directionNav:true, //Next &amp; Prev
+	afterLoad: function(){
+		jQuery(".nivo-caption").animate({top:"60"}, {easing:"easeOutBack", duration: 500})
+		},
+		beforeChange: function(){
+		jQuery(".nivo-caption").animate({top:"-300"}, {easing:"easeInBack", duration: 500})
+		},
+		afterChange: function(){
+		jQuery(".nivo-caption").animate({top:"60"}, {easing:"easeOutBack", duration: 500})
+		}
+	});
+	
+});
+
+</script>
+		
+		
+		
+		
+
+		<style>
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.video_class {
+				position: relative;
+				width: 100%;
+				height: 880px;
+			}
+			
+			video {
+				width: 100%;
+				height: 880px;
+				object-fit: cover;
+				object-position: 100% 100%;
+				display: inline-block
+			}
+			
+			.bg_class {
+				background: rgba(0, 0, 0, .6);
+				width: 100%;
+				height: 880px;
+				position: absolute;
+				top: 0px;
+				left: 0px
+			}
+			
+			.text_class {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				-webkit-transform: translateX(-50%) translateY(-50%);
+				-webkit-transform: translateX(-50%) translateY(-50%);
+				-moz-transform: translateX(-50%) translateY(-50%);
+				-ms-transform: translateX(-50%) translateY(-50%);
+				transform: translateX(-50%) translateY(-50%);
+				text-align: center
+			}
+			
+			#showvideo {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				-webkit-transform: translateX(-50%) translateY(-50%);
+				-webkit-transform: translateX(-50%) translateY(-50%);
+				-moz-transform: translateX(-50%) translateY(-50%);
+				-ms-transform: translateX(-50%) translateY(-50%);
+				transform: translateX(-50%) translateY(-50%);
+				text-align: center
+			}
+			
+			.btn_class {
+				background-color:gold;
+				border: 1px solid #2b9152;
+				transition: background-color .5s ease;
+				cursor: pointer;
+				display: inline-block;
+				width: 200px;
+				padding: 20px;
+				text-align: center;
+				font-size: 24px;
+				color: #fff;
+				border-radius: 5px;
+			}
+			
+			.btn_class:hover {
+				background-color: #2b9152
+			}
+			
+			.text_class h1 {
+				font-size: 60px;
+				color: #fff;
+			}
+			
+			.text_class p {
+				font-size: 30px;
+				color: #fff;
+				padding: 20px 0px;
+			}
+			
+			.videos_res {
+				overflow: hidden;
+				height: 880px;
+				margin: 0 auto
+			}
+			
+			#three_overcontent {
+				background: rgba(0, 0, 0, 0.5);
+				position: absolute;
+				color: #fff;
+				width: 100%;
+				height: 880px;
+			}
+			
+			#three_overfly {
+				background: rgba(0, 0, 0, 0.5);
+				position: absolute;
+				color: #fff;
+				width: 880px;
+				height: 300px;
+			}
+			
+			.three_fd {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				height: 100%;
+				flex-flow: column;
+			}
+			
+			.goods1 {
+				width: 100%;
+				margin: 50px auto;
+			}
+			
+			.goods2 {
+				width: 100%;
+				margin: 20px auto;
+			}
+			
+			.goods3 {
+				margin: 20px auto;
+			}
+			
+			.goods4 {
+				width: 100%;
+				margin: 20px auto;
+			}
+			
+			.goods5 {
+				width: 100%;
+				margin: 20px auto;
+			}
+			
+			.goods1 img {
+				animation: myfirst 2s infinite;
+				width: 80px;
+				height: 80px;
+				margin-left: 70%;
+			}
+			
+			.goods2 img {
+				animation: myfirst 2s infinite;
+				width: 80px;
+				height: 80px;
+				margin-left: 20%;
+			}
+			
+			.goods3 img {
+				animation: myfirst 2s infinite;
+				width: 80px;
+				height: 80px;
+				margin-left: 80%;
+			}
+			
+			.goods4 img {
+				animation: myfirst 2s infinite;
+				width: 80px;
+				height: 80px;
+				margin-left: 55%;
+			}
+			
+			.goods5 img {
+				animation: myfirst 2s infinite;
+				width: 80px;
+				height: 80px;
+				margin-left: 25%;
+			}
+			
+			@keyframes myfirst {
+				0% {
+					transform: translate(0px, 0px);
+				}
+				50% {
+					transform: translate(0px, -10px);
+				}
+				100% {
+					transform: translate(0px, 0px);
+				}
+			}
+			
+			.gallery {
+				width: 1300px;
+				margin: 30px auto;
+				padding: 5px;
+				
+			}
+			
+			.gallery>div {
+				position: relative;
+				float: left;
+				padding: 5px;
+			}
+			
+			.gallery>div>img {
+				width: 250px;
+				transition: .1s transform;
+				transform: translateZ(0);
+				/* hack */
+			}
+			
+			.gallery>div:hover {
+				z-index: 1;
+			}
+			
+			.gallery>div:hover>img {
+				transform: scale(1.5, 1.5);
+				transition: .3s transform;
+			}
+			
+			.cf:before,
+			.cf:after {
+				display: table;
+				content: "";
+				line-height: 0;
+			}
+			
+			.cf:after {
+				clear: both;
+			}
+			
+			.parent {
+				position: relative;
+			}
+			
+			.child {
+				margin: auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+			}
+			
+			#four {
+				width: 100%;
+				height: 800px;
+				position: relative;
+			}
+			
+			#four_fd {
+				width: 80%;
+				height: 750px;
+				margin: auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+			}
+			
+			#five {
+				width: 100%;
+				height: 500px;
+				background-color: chartreuse;
+				position: relative;
+			}
+			
+			#five-one {
+				width: 60%;
+				height: 400px;
+				margin: auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				
+			}
+			
+			#two {
+				width: 100%;
+				height: 500px;
+				position: relative;
+			}
+			
+			#twocontent {
+				width: 70%;
+				height: 450px;
+				margin: auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+			}
+			
+			#showmyphoto {
+				width: 100%;
+				height: 900px;
+				position: relative;
+			}
+			
+			#showmyphoto-one {
+				width: 80%;
+				height: 880px;
+				margin: auto;
+	
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+			}
+			
+			
+			
+			#two-one-two {
+				height: 100%;
+				float: left;
+				margin-left: 10px;
+			}
+			
+			#two-one-two-p1 {
+				margin: 0;
+				padding: 0;
+				display: inline-block;
+				vertical-align: middle;
+				color: #000000;
+				font-size: 18px;
+			}
+			
+			#two-one-two-p2 {
+				color: #CCCCCC;
+				font-size: 13px;
+			}
+			
+			#two-one-two-p12 {
+				margin: 0;
+				padding: 0;
+				display: inline-block;
+				vertical-align: middle;
+				color: #CCCCCC;
+				font-size: 18px;
+			}
+			 #footer {
+                height: 90px;
+                line-height: 30px;
+                padding-bottom: 20px;
+                padding-top: 30px;
+                width: 100%;
+                text-align: center;
+                background: #333;
+                color: #fff;
+                font-family: Arial;
+                font-size: 12px;
+                letter-spacing: 1px;
+            }
+		</style>
+	</head>
+
+	<body>
+		<div class="contact">
+			<div class="video_class">
+				<div class="videos_res">
+					<video preload="metadata" autoplay muted loop>
+						    <source src="videos/pano.mp4" type="video/mp4">
+							<source src="videos/pano.ogv" type="video/ogg">//若不支持MP4，则会继续ogv，webm
+                            <source src="videos/pano.webm" type="video/webm">
+					</video>
+				</div>
+				<div class="bg_class"></div>
+				<div class="text_class">
+					<h1>BigiCam A1 全景相机</h1>
+					<p id="text_flash"> Share my life, Looking at the world</p>
+					<p> MAKE YOUR MARK</p>
+					<a class="btn_class" onclick="aClick ()">start now</a>
+				</div>
+				<div id="showvideo" style="display: none; width: 720px;  height:480px;">
+					<a onclick="aClickclose()" style="float: right;cursor: pointer;">关闭</a>
+					<video controls preload="auto" style="width:720px; height: 460px; object-fit: fill;" autoplay>
+						<source src="videos/pano.mp4" type="video/mp4">
+					</video>
+
+				</div>
+			</div>
+
+			<div style="width: 100% ; height: 50px;">
+				<p align="center" style="color: #1F2833;font-size: 35px;margin-top: 40px;">规格参数</p>
+			</div>
+			<div id="two">
+				<div id="twocontent">
+					<div id="two-one" style="width: 28%;height: 100%;float: left;">
+						<div class="parent" style="width: 100%;height: 33%;">
+							<div class="child" style="width: 100%;height: 50px;">
+								<div id="two-one-one">
+									<img src="images/diannao.png" style="width: 50px;height:50px;float: left;" />
+								</div>
+								<div id="two-one-two">
+									<p id="two-one-two-p1">
+										视频分辨率<br />
+										<p id="two-one-two-p2">
+											3040*1520@30fps </p>
+									</p>
+									<span style="display: inline-block;height:100%;vertical-align: middle;background-color: #FFFFFF;"></span>
+								</div>
+							</div>
+
+						</div>
+						<div class="parent" style="width: 100%;height: 33%;">
+
+							<div class="child" style="width: 100%;height: 50px;">
+								<div id="two-one-one">
+									<img src="images/xiangji.png" style="width: 50px;height:50px;float: left;" />
+								</div>
+								<div id="two-one-two" style="float: left; margin-left: 10px;">
+									<p id="two-one-two-p1">
+										照片分辨率<br />
+										<p id="two-one-two-p2">
+											3040*1520 </p>
+									</p>
+								<span style="display: inline-block;height:100%;vertical-align: middle;background-color: #FFFFFF;"></span>
+								</div>
+							</div>
+
+						</div>
+						<div class="parent" style="width: 100%;height: 33%;">
+
+							<div class="child" style="width: 100%;height: 50px;">
+								<div id="two-one-one">
+									<img src="images/bianxie.png" style="width: 50px;height:50px;float: left;" />
+								</div>
+								<div id="two-one-two" style="float: left; ">
+									<p id="two-one-two-p1">
+										小巧便捷 旅游游玩好伴侣<br />
+										<a id="two-one-two-p2">30mm x 23.4mm x21mm</a>
+									</p>
+								<span style="display: inline-block;height:100%;vertical-align: middle;background-color: #FFFFFF;"></span>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div id="two-two" style="width: 50%;height: 100%; float: left;">
+						<img src="images/number.png" style="width: 100%;height: 100%;" />
+					</div>
+					<div id="two-three" style="width: 22%;height: 100%;float: left;">
+						<div class="parent" style="width: 100%;height: 33%;">
+							<div class="child" style="width: 100%;height: 50px;">
+								<div id="two-one-one">
+									<img src="images/guanghuan.png" style="width: 50px;height:50px;float: left;" />
+								</div>
+								<div id="two-one-two" style="float: left; ">
+									<p id="two-one-two-p1">
+										光圈
+									</p>
+									<p id="two-one-two-p12">
+										F2.0
+									</p>
+								<span style="display: inline-block;height:100%;vertical-align: middle;background-color: #FFFFFF;"></span>
+								</div>
+							</div>
+
+						</div>
+						<div class="parent" style="width: 100%;height: 33%;">
+
+							<div class="child" style="width: 100%;height: 50px;">
+								<div id="two-one-one">
+									<img src="images/jiekou.png" style="width: 50px;height:50px;float: left;" />
+								</div>
+								<div id="two-one-two" style="float: left; ">
+									<p id="two-one-two-p1">
+										接口
+									</p>
+									<p id="two-one-two-p12">
+										Micro USB/Type-C
+									</p>
+									<span style="display: inline-block;height:100%;vertical-align: middle;background-color: #FFFFFF;"></span>
+								</div>
+							</div>
+
+						</div>
+						<div class="parent" style="width: 100%;height: 33%;">
+
+							<<div class="child" style="width: 100%;height: 50px;">
+								<div id="two-one-one">
+									<img src="images/suo.png" style="width: 50px;height:50px;float: left;" />
+								</div>
+								<div id="two-one-two" style="float: left; ">
+									<p id="two-one-two-p1">
+										操作简单 即插即用
+									</p>
+
+									<span style="display: inline-block;height:100%;vertical-align: middle;background-color: #FFFFFF;"></span>
+								</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<div style="width: 100% ; height: 50px;">
+			<p align="center" style="color: #1F2833;font-size: 35px;margin-top: 40px;">全方位视图</p>
+		</div>
+		<!--<div id="five">
+             	 <div id="five-one">
+             	 	<img src="images/3.jpg" style="width: 100%;height: 100%;"/>
+             	 </div>
+             </div>-->
+
+		<div class="gallery cf">
+			<div>
+				<img src="images/1.jpg" />
+			</div>
+			<div>
+				<img src="images/2.jpg" />
+			</div>
+			<div>
+				<img src="images/3.jpg" />
+			</div>
+			<div>
+				<img src="images/4.jpg" />
+			</div>
+			<div>
+				<img src="images/5.jpg" />
+			</div>
+			
+		</div>
+		</div>
+
+		<div id="three" style="margin-top: 40px; width: 100% ; height: 880px ; position:relative; background: url(images/2.jpg);">
+			<div id="three_overcontent">
+				<div class="three_fd">
+					<p style="font-size: 40px;">震撼全景体验，马上开始</p>
+					<p style="margin-top: 20px;font-size: 20px;">分享我们的生活</p>
+					<div id="three_img_one" style="margin-top: 20px;">
+						<img src="PanoCapture_20170822_100841.jpg" width="200px" height="120px" style="cursor: pointer;" onclick="test_fadeIn1()" />
+						<img src="PanoCapture_20170822_100944.jpg" width="200px" height="120px" style="cursor: pointer;margin-left: 25px;" onclick="test_fadeIn2()" />
+						<img src="PanoCapture_20170822_102109.jpg" width="200px" height="120px" style="cursor: pointer;margin-left: 25px;" onclick="test_fadeIn3()" />
+					</div>
+					<div id="three_img_two">
+						<img src="PanoCapture_20170822_101139.jpg" width="200px" height="120px" style="cursor: pointer;margin-top: 20px;" onclick="test_fadeIn4()" />
+					</div>
+				</div>
+
+			</div>
+			<div id="three_overfly" style="width: 800px;height: 600px;  top: 0; left: 0; bottom: 0; right: 0;  margin: auto;  
+                 position: absolute; display: none; ">
+				<a onclick="test_fadeOut()" style="float: right;cursor: pointer;">关闭</a>
+				<canvas id="canvas" width="800" height="580" style="position:absolute;left:0;top:0;background-color: black;margin-top: 20px;">
+	                   </canvas>
+			</div>
+
+		</div>
+
+		<!--浮动图片-->
+		<div id="four" style="width: 100% ; height: 800px;">
+			<div id="four_fd">
+				<div style="width: 70%;height: 100%; float: left;">
+					<!--<p style="font-size: 40px;color: black;">一键分享，实时直播</p>
+						     <p style="font-size: 40px;color:#8A8A8A;">分享我们的生活</p>-->
+					<div class="goods1">
+						<img src="images/qq.png" />
+						<!--<img src="images/weixin.png" />
+							     <img src="images/weibo.png" />
+							     <img src="images/sms.png" />-->
+					</div>
+					<div class="goods2">
+						<img src="images/weixin.png" />
+					</div>
+					<div>
+						<p style="font-size: 40px;color: black;text-align: center;">一键分享</p>
+						<p style="font-size: 18px;color:#8A8A8A;text-align: center;margin-top: 10px;">朋友圈从此与众不同</p>
+					</div>
+					<div class="goods3">
+						<img src="images/weibo.png" />
+					</div>
+					<div class="goods4">
+						<img src="images/sms.png" />
+					</div>
+					<div class="goods5">
+						<img src="images/weibo.png" />
+					</div>
+				</div>
+				<div style="width: 30%;height: 100%;float: left;">
+					<img src="images/share.png" style="width: 100%;height: 100%;" />
+				</div>
+			</div>
+		</div>
+
+
+	
+		<div style="width: 100%;height: 600px;background-color: #0000FF;">	
+		</div>
+
+     <div id="slider-container">
+
+	<div id="slider" class="nivoSlider">
+		<img title="#htmlcaption1" alt="" src="images/slider1.jpg">
+		<img title="#htmlcaption2" alt="" src="images/slider2.jpg">
+		<img title="#htmlcaption3" alt="" src="images/slider3.jpg">
+		<img title="#htmlcaption4" alt="" src="images/slider4.jpg">
+	</div><!-- #slider -->
+	
+	<div id="htmlcaption1" class="nivo-html-caption">
+		<span class="sdate">December 01, 2011</span>
+		<h1>Let´s create your company growth faster...</h1>
+		<hr>
+		<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sapien lorem, placerat ac imperdiet a, volutpat et risus. </p>
+	</div>
+	
+	<div id="htmlcaption2" class="nivo-html-caption">
+		<span class="sdate">December 05, 2011</span>
+		<h1>We can help to solve your company problem...</h1>
+		<hr>
+		<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sapien lorem, placerat ac imperdiet a, volutpat et risus. </p>
+	</div>
+	
+	<div id="htmlcaption3" class="nivo-html-caption">
+		<span class="sdate">December 07, 2011</span>
+		<h1>We always smile to help you...</h1>
+		<hr>
+		<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sapien lorem, placerat ac imperdiet a, volutpat et risus. </p>
+	</div>
+	
+	<div id="htmlcaption4" class="nivo-html-caption">
+		<span class="sdate">December 07, 2011</span>
+		<h1>Discover the places you´ve never been before...</h1>
+		<hr>
+		<p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. In sapien lorem, placerat ac imperdiet a, volutpat et risus. </p>
+	</div>
+	
+</div>
+
+
+
+		<!--<div id="flashphoto" style="width: 100%;height: 600px;">
+			  
+		<div id="flash" style="width: 100%;height: 600px;">
+			
+<div id="flash_child">
+			 <div id="flash_one1" >
+				<div id="flash_two1" >
+					<p style="display: inline-block;vertical-align: middle;color: #000000;margin-left: 30px;">
+                        1.360度全景视角，360度无死角，景物一览无余<br />
+                        2.操作简介，即插即用<br />
+                        3.小巧便携，旅游游玩好伴侣<br />
+                        4.360度全景直播，随时随地分享你的趣事<br />
+                        5.一键分享，朋友圈从此与众不同<br />
+                        6.朋友聚餐、家庭聚会，装X神器
+                   
+                  </p>
+                  <span style="display: inline-block;height:100%;vertical-align: middle;"></span>
+				</div>
+				
+			</div>
+			<div id="flash_one" >
+				<div id="flash_two">
+
+					<div class="box">
+
+						<div class="list">
+							<ul>
+								<li class="p7">
+									<a href=""><img src="images/1.png" alt="" /></a>
+								</li>
+								<li class="p6">
+									<a href=""><img src="images/2.jpg" alt="" /></a>
+								</li>
+								<li class="p5">
+									<a href=""><img src="images/3.jpg" alt="" /></a>
+								</li>
+								<li class="p4">
+									<a href=""><img src="images/4.jpg" alt="" /></a>
+								</li>
+								<li class="p3">
+									<a href=""><img src="images/1.png" alt="" /></a>
+								</li>
+								<li class="p2">
+									<a href=""><img src="images/2.jpg" alt="" /></a>
+								</li>
+								<li class="p1">
+									<a href=""><img src="images/3.jpg" alt="" /></a>
+								</li>
+							</ul>
+						</div>
+
+						<a href="javascript:;" class="prev btn">
+							<</a>
+								<a href="javascript:;" class="next btn">></a>
+
+								<div class="buttons">
+									<a href="javascript:;"><span class="blue"></span></a>
+									<a href="javascript:;"><span></span></a>
+									<a href="javascript:;"><span></span></a>
+									<a href="javascript:;"><span></span></a>
+									<a href="javascript:;"><span></span></a>
+									<a href="javascript:;"><span></span></a>
+									<a href="javascript:;"><span></span></a>
+								</div>
+					</div>
+
+				</div>
+			</div>
+			</div>
+
+		</div>
+		
+		</div>-->
+		
+		<div id="showmyphoto">
+			<div id="showmyphoto-one">
+				<img src="images/takephoto.jpg" style="width: 100%;height: 880px;"/>
+			</div>
+		</div>
+		
+		
+		<div id="footer" >
+			Copyright@copy2017<br />
+			工作时间：周一到周五  9：00~17：30<br />
+			联系电话：0731-8088888
+		</div>
+	
+		<script type="text/javascript" src="js/jquery-3.1.1.js"></script>
+
+		<script language="JavaScript">
+			function aClick() {
+				document.getElementById("showvideo").style.display = 'block';
+			}
+
+			function aClickclose() {
+				document.getElementById("showvideo").style.display = 'none';
+			}
+
+			function test_fadeIn1() {
+				initTouchAndMouse("canvas");
+				panoviewer_need_binocular(false);
+				panoviewer_start("PanoCapture_20170822_100841.jpg", "canvas",800,580);
+				updateModel(2);
+				$("#three_overfly").fadeIn(2000, function() {});
+			}
+
+			function test_fadeIn2() {
+				initTouchAndMouse("canvas");
+				panoviewer_need_binocular(false);
+				panoviewer_start("PanoCapture_20170822_100944.jpg", "canvas", 800, 580);
+				updateModel(2);
+				$("#three_overfly").fadeIn(2000, function() {});
+			}
+
+			function test_fadeIn3() {
+				initTouchAndMouse("canvas");
+				panoviewer_need_binocular(false);
+				panoviewer_start("PanoCapture_20170822_103120.jpg", "canvas", 800, 580);
+				updateModel(2);
+				$("#three_overfly").fadeIn(2000, function() {});
+			}
+
+			function test_fadeIn4() {
+				initTouchAndMouse("canvas");
+				panoviewer_need_binocular(false);
+				panoviewer_start("PanoCapture_20170822_101139.jpg", "canvas", 800, 580);
+				updateModel(2);
+				$("#three_overfly").fadeIn(2000, function() {});
+			}
+
+			function test_fadeOut() {
+				$("#three_overfly").fadeOut(2000, function() {});
+			}
+		</script>
+
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript">
+			var $a = $(".buttons a");
+			var $s = $(".buttons span");
+			var cArr = ["p7", "p6", "p5", "p4", "p3", "p2", "p1"];
+			var index = 0;
+			$(".next").click(
+				function() {
+					nextimg();
+				}
+			)
+			$(".prev").click(
+				function() {
+					previmg();
+				}
+			)
+			//上一张
+			function previmg() {
+				cArr.unshift(cArr[6]);
+				cArr.pop();
+				//i是元素的索引，从0开始
+				//e为当前处理的元素
+				//each循环，当前处理的元素移除所有的class，然后添加数组索引i的class
+				$("li").each(function(i, e) {
+					$(e).removeClass().addClass(cArr[i]);
+				})
+				index--;
+				if(index < 0) {
+					index = 6;
+				}
+				show();
+			}
+
+			//下一张
+			function nextimg() {
+				cArr.push(cArr[0]);
+				cArr.shift();
+				$("li").each(function(i, e) {
+					$(e).removeClass().addClass(cArr[i]);
+				})
+				index++;
+				if(index > 6) {
+					index = 0;
+				}
+				show();
+			}
+
+			//通过底下按钮点击切换
+			$a.each(function() {
+				$(this).click(function() {
+					var myindex = $(this).index();
+					var b = myindex - index;
+					if(b == 0) {
+						return;
+					} else if(b > 0) {
+						/*
+						 * splice(0,b)的意思是从索引0开始,取出数量为b的数组
+						 * 因为每次点击之后数组都被改变了,所以当前显示的这个照片的索引才是0
+						 * 所以取出从索引0到b的数组,就是从原本的这个照片到需要点击的照片的数组
+						 * 这时候原本的数组也将这部分数组进行移除了
+						 * 再把移除的数组添加的原本的数组的后面
+						 */
+						var newarr = cArr.splice(0, b);
+						cArr = $.merge(cArr, newarr);
+						$("li").each(function(i, e) {
+							$(e).removeClass().addClass(cArr[i]);
+						})
+						index = myindex;
+						show();
+					} else if(b < 0) {
+						/*
+						 * 因为b<0,所以取数组的时候是倒序来取的,也就是说我们可以先把数组的顺序颠倒一下
+						 * 而b现在是负值,所以取出索引0到-b即为需要取出的数组
+						 * 也就是从原本的照片到需要点击的照片的数组
+						 * 然后将原本的数组跟取出的数组进行拼接
+						 * 再次倒序,使原本的倒序变为正序
+						 */
+						cArr.reverse();
+						var oldarr = cArr.splice(0, -b)
+						cArr = $.merge(cArr, oldarr);
+						cArr.reverse();
+						$("li").each(function(i, e) {
+							$(e).removeClass().addClass(cArr[i]);
+						})
+						index = myindex;
+						show();
+					}
+				})
+			})
+
+			//改变底下按钮的背景色
+			function show() {
+				$($s).eq(index).addClass("blue").parent().siblings().children().removeClass("blue");
+			}
+
+			//点击class为p2的元素触发上一张照片的函数
+			$(document).on("click", ".p2", function() {
+				previmg();
+				return false; //返回一个false值，让a标签不跳转
+			});
+
+			//点击class为p4的元素触发下一张照片的函数
+			$(document).on("click", ".p4", function() {
+				nextimg();
+				return false;
+			});
+
+			//			鼠标移入box时清除定时器
+			$(".box").mouseover(function() {
+				clearInterval(timer);
+			})
+
+			//			鼠标移出box时开始定时器
+			$(".box").mouseleave(function() {
+				timer = setInterval(nextimg, 4000);
+			})
+
+			//			进入页面自动开始定时器
+			timer = setInterval(nextimg, 4000);
+		</script>
+
+	</body>
+
+</html>

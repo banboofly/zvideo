@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<meta charset="UTF-8">
+		<meta name="renderer" content="webkit">
+		<meta name="renderer" content="ie-comp"> 
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="renderer" content="ie-stand"/> 
+		
+		<title>video</title>
+		
+		
+		
+		<link rel="stylesheet" href="css/floatphoto.css" />
+		<link rel="stylesheet" href="css/animate.css" />
+		<script src="js/panoviewer.js"></script>
+		<script src="./js/event_handle.js"></script>
+	
+		
+		<link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+<link rel="stylesheet" type="text/css" href="css/nivo-slider.css" media="screen">
+<script type="text/javascript" src="js/jquery-1.6.4.min.js"></script>
+<script type="text/javascript" src="js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="js/jquery.nivo.slider.pack.js"></script>
+<script type="text/javascript">
+//Slider
+jQuery(window).load(function() {
+	jQuery('#slider').nivoSlider({
+	effect: 'fold',
+	slices:15,
+	animSpeed:500, //Slide transition speed
+	pauseTime:5000,
+	controlNav: false,
+	directionNavHide: false,
+	prevText: 'prev',
+	nextText: 'next',
+	startSlide:0, //Set starting Slide (0 index)
+	directionNav:true, //Next &amp; Prev
+	afterLoad: function(){
+		jQuery(".nivo-caption").animate({top:"60"}, {easing:"easeOutBack", duration: 500})
+		},
+		beforeChange: function(){
+		jQuery(".nivo-caption").animate({top:"-300"}, {easing:"easeInBack", duration: 500})
+		},
+		afterChange: function(){
+		jQuery(".nivo-caption").animate({top:"60"}, {easing:"easeOutBack", duration: 500})
+		}
+	});
+	
+});
+
+</script>
+		
+		
+		
+		
+
+		<style>
+			* {
+				margin: 0px;
+				padding: 0px;
+			}
+			
+			.video_class {
+				position: relative;
+				width: 100%;
+				height: 880px;
+			}
+			
+			video {
+				width: 100%;
+				height: 880px;
+				object-fit: cover;
+				object-position: 100% 100%;
+				display: inline-block
+			}
+			
+			.bg_class {
+				background: rgba(0, 0, 0, .6);
+				width: 100%;
+				height: 880px;
+				position: absolute;
+				top: 0px;
+				left: 0px
+			}
+			
+			.text_class {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				-webkit-transform: translateX(-50%) translateY(-50%);
+				-webkit-transform: translateX(-50%) translateY(-50%);
+				-moz-transform: translateX(-50%) translateY(-50%);
+				-ms-transform: translateX(-50%) translateY(-50%);
+				transform: translateX(-50%) translateY(-50%);
+				text-align: center
+			}
+			
+			#showvideo {
+				position: absolute;
+				top: 50%;
+				left: 50%;
+				-webkit-transform: translateX(-50%) translateY(-50%);
+				-webkit-transform: translateX(-50%) translateY(-50%);
+				-moz-transform: translateX(-50%) translateY(-50%);
+				-ms-transform: translateX(-50%) translateY(-50%);
+				transform: translateX(-50%) translateY(-50%);
+				text-align: center
+			}
+			
+			.btn_class {
+				background-color:gold;
+				border: 1px solid #2b9152;
+				transition: background-color .5s ease;
+				cursor: pointer;
+				display: inline-block;
+				width: 200px;
+				padding: 20px;
+				text-align: center;
+				font-size: 24px;
+				color: #fff;
+				border-radius: 5px;
+			}
+			
+			.btn_class:hover {
+				background-color: #2b9152
+			}
+			
+			.text_class h1 {
+				font-size: 60px;
+				color: #fff;
+				padding-bottom: 30px;
+			}
+			
+			.text_class p {
+				font-size: 30px;
+				color: #fff;
+				padding: 30px 0px;
+			}
+			
+			.videos_res {
+				overflow: hidden;
+				height: 880px;
+				margin: 0 auto
+			}
+			
+			#three_overcontent {
+				background: rgba(0, 0, 0, 0.5);
+				position: absolute;
+				color: #fff;
+				width: 100%;
+				height: 880px;
+			}
+			
+			#three_overfly {
+				background: rgba(0, 0, 0, 0.5);
+				position: absolute;
+				color: #fff;
+				width: 880px;
+				height: 300px;
+			}
+			
+			.three_fd {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				height: 100%;
+				flex-flow: column;
+			}
+			
+			.goods1 {
+				width: 100%;
+				margin: 50px auto;
+			}
+			
+			.goods2 {
+				width: 100%;
+				margin: 20px auto;
+			}
+			
+			.goods3 {
+				margin: 20px auto;
+			}
+			
+			.goods4 {
+				width: 100%;
+				margin: 20px auto;
+			}
+			
+			.goods5 {
+				width: 100%;
+				margin: 20px auto;
+			}
+			
+			.goods1 img {
+				animation: myfirst 2s infinite;
+				width: 80px;
+				height: 80px;
+				margin-left: 70%;
+			}
+			
+			.goods2 img {
+				animation: myfirst 2s infinite;
+				width: 80px;
+				height: 80px;
+				margin-left: 20%;
+			}
+			
+			.goods3 img {
+				animation: myfirst 2s infinite;
+				width: 80px;
+				height: 80px;
+				margin-left: 80%;
+			}
+			
+			.goods4 img {
+				animation: myfirst 2s infinite;
+				width: 80px;
+				height: 80px;
+				margin-left: 55%;
+			}
+			
+			.goods5 img {
+				animation: myfirst 2s infinite;
+				width: 80px;
+				height: 80px;
+				margin-left: 25%;
+			}
+			
+			@keyframes myfirst {
+				0% {
+					transform: translate(0px, 0px);
+				}
+				50% {
+					transform: translate(0px, -10px);
+				}
+				100% {
+					transform: translate(0px, 0px);
+				}
+			}
+			
+			.gallery {
+				width: 1300px;
+				margin: 30px auto;
+				padding: 5px;
+				
+			}
+			
+			.gallery>div {
+				position: relative;
+				float: left;
+				padding: 5px;
+			}
+			
+			.gallery>div>img {
+				width: 250px;
+				transition: .1s transform;
+				transform: translateZ(0);
+				/* hack */
+			}
+			
+			.gallery>div:hover {
+				z-index: 1;
+			}
+			
+			.gallery>div:hover>img {
+				transform: scale(1.5, 1.5);
+				transition: .3s transform;
+			}
+			
+			.cf:before,
+			.cf:after {
+				display: table;
+				content: "";
+				line-height: 0;
+			}
+			
+			.cf:after {
+				clear: both;
+			}
+			
+			.parent {
+				position: relative;
+			}
+			
+			.child {
+				margin: auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+			}
+			
+			#four {
+				width: 100%;
+				height: 800px;
+				position: relative;
+			}
+			
+			#four_fd {
+				width: 80%;
+				height: 750px;
+				margin: auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+			}
+			
+			#five {
+				width: 100%;
+				height: 500px;
+				background-color: chartreuse;
+				position: relative;
+			}
+			
+			#five-one {
+				width: 60%;
+				height: 400px;
+				margin: auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+				
+			}
+			
+			#two {
+				width: 100%;
+				height: 500px;
+				position: relative;
+			}
+			
+			#twocontent {
+				width: 70%;
+				height: 450px;
+				margin: auto;
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+			}
+			
+			#showmyphoto {
+				width: 100%;
+				height: 900px;
+				position: relative;
+			}
+			
+			#showmyphoto-one {
+				width: 80%;
+				height: 880px;
+				margin: auto;
+	
+				position: absolute;
+				top: 0;
+				left: 0;
+				bottom: 0;
+				right: 0;
+			}
+			
+			
+			
+			#two-one-two {
+				height: 100%;
+				float: left;
+				margin-left: 10px;
+			}
+			
+			#two-one-two-p1 {
+				margin: 0;
+				padding: 0;
+				display: inline-block;
+				vertical-align: middle;
+				color: #000000;
+				font-size: 18px;
+			}
+			
+			#two-one-two-p2 {
+				color: #CCCCCC;
+				font-size: 13px;
+			}
+			
+			#two-one-two-p12 {
+				margin: 0;
+				padding: 0;
+				display: inline-block;
+				vertical-align: middle;
+				color: #CCCCCC;
+				font-size: 18px;
+			}
+			 #footer {
+                height: 90px;
+                line-height: 30px;
+                padding-bottom: 20px;
+                padding-top: 30px;
+                width: 100%;
+                text-align: center;
+                background: #333;
+                color: #fff;
+                font-family: Arial;
+                font-size: 12px;
+                letter-spacing: 1px;
+            }
+		</style>
+	</head>
+
+	<body>
+		
+		
+
+		
+		
+		
+		
+		
+	<div class="contact">
+			<div class="video_class">
+				<div class="videos_res">
+					<video preload="metadata" autoplay muted loop>
+						<source src="videos/pano.mp4" type="video/mp4">
+					</video>
+				</div>
+				<div class="bg_class"></div>
+				<div class="text_class">
+					<h1>BigiCam A1 全景相机</h1>
+					<p id="text_flash"> Share my life, Looking at the world</p>
+					<p> MAKE YOUR MARK</p>
+					<a class="btn_class" onclick="aClick ()">start now</a>
+				</div>
+				<div id="showvideo" style="display: none; width: 720px;  height:480px;">
+					<a onclick="aClickclose()" style="float: right;cursor: pointer;">关闭</a>
+					<video controls preload="auto" style="width:720px; height: 460px; object-fit: fill;" autoplay>
+						<source src="videos/pano.mp4" type="video/mp4">
+					</video>
+
+				</div>
+			</div>
+
+			<div style="width: 100% ; height: 50px;">
+				<p align="center" style="color: #1F2833;font-size: 35px;margin-top: 40px;">规格参数</p>
+			</div>
+			<div id="two">
+				<div id="twocontent">
+					<div id="two-one" style="width: 28%;height: 100%;float: left;">
+						<div class="parent" style="width: 100%;height: 33%;">
+							<div class="child" style="width: 100%;height: 50px;">
+								<div id="two-one-one">
+									<img src="images/diannao.png" style="width: 50px;height:50px;float: left;" />
+								</div>
+								<div id="two-one-two">
+									<p id="two-one-two-p1">
+										视频分辨率<br />
+										<p id="two-one-two-p2">
+											3040*1520@30fps </p>
+									</p>
+									<span style="display: inline-block;height:100%;vertical-align: middle;background-color: #FFFFFF;"></span>
+								</div>
+							</div>
+
+						</div>
+						<div class="parent" style="width: 100%;height: 33%;">
+
+							<div class="child" style="width: 100%;height: 50px;">
+								<div id="two-one-one">
+									<img src="images/xiangji.png" style="width: 50px;height:50px;float: left;" />
+								</div>
+								<div id="two-one-two" style="float: left; margin-left: 10px;">
+									<p id="two-one-two-p1">
+										照片分辨率<br />
+										<p id="two-one-two-p2">
+											3040*1520 </p>
+									</p>
+								<span style="display: inline-block;height:100%;vertical-align: middle;background-color: #FFFFFF;"></span>
+								</div>
+							</div>
+
+						</div>
+						<div class="parent" style="width: 100%;height: 33%;">
+
+							<div class="child" style="width: 100%;height: 50px;">
+								<div id="two-one-one">
+									<img src="images/bianxie.png" style="width: 50px;height:50px;float: left;" />
+								</div>
+								<div id="two-one-two" style="float: left; ">
+									<p id="two-one-two-p1">
+										小巧便捷 旅游游玩好伴侣<br />
+										<a id="two-one-two-p2">30mm x 23.4mm x21mm</a>
+									</p>
+								<span style="display: inline-block;height:100%;vertical-align: middle;background-color: #FFFFFF;"></span>
+								</div>
+							</div>
+
+						</div>
+					</div>
+					<div id="two-two" style="width: 50%;height: 100%; float: left;">
+						<img src="images/number.png" style="width: 100%;height: 100%;" />
+					</div>
+					<div id="two-three" style="width: 22%;height: 100%;float: left;">
+						<div class="parent" style="width: 100%;height: 33%;">
+							<div class="child" style="width: 100%;height: 50px;">
+								<div id="two-one-one">
+									<img src="images/guanghuan.png" style="width: 50px;height:50px;float: left;" />
+								</div>
+								<div id="two-one-two" style="float: left; ">
+									<p id="two-one-two-p1">
+										光圈
+									</p>
+									<p id="two-one-two-p12">
+										F2.0
+									</p>
+								<span style="display: inline-block;height:100%;vertical-align: middle;background-color: #FFFFFF;"></span>
+								</div>
+							</div>
+
+						</div>
+						<div class="parent" style="width: 100%;height: 33%;">
+
+							<div class="child" style="width: 100%;height: 50px;">
+								<div id="two-one-one">
+									<img src="images/jiekou.png" style="width: 50px;height:50px;float: left;" />
+								</div>
+								<div id="two-one-two" style="float: left; ">
+									<p id="two-one-two-p1">
+										接口
+									</p>
+									<p id="two-one-two-p12">
+										Micro USB/Type-C
+									</p>
+									<span style="display: inline-block;height:100%;vertical-align: middle;background-color: #FFFFFF;"></span>
+								</div>
+							</div>
+
+						</div>
+						<div class="parent" style="width: 100%;height: 33%;">
+
+							<<div class="child" style="width: 100%;height: 50px;">
+								<div id="two-one-one">
+									<img src="images/suo.png" style="width: 50px;height:50px;float: left;" />
+								</div>
+								<div id="two-one-two" style="float: left; ">
+									<p id="two-one-two-p1">
+										操作简单 即插即用
+									</p>
+
+									<span style="display: inline-block;height:100%;vertical-align: middle;background-color: #FFFFFF;"></span>
+								</div>
+						</div>
+
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<div style="width: 100% ; height: 50px;">
+			<p align="center" style="color: #1F2833;font-size: 35px;margin-top: 40px;">全方位视图</p>
+		</div>
+		<!--<div id="five">
+             	 <div id="five-one">
+             	 	<img src="images/3.jpg" style="width: 100%;height: 100%;"/>
+             	 </div>
+             </div>-->
+
+		<div class="gallery cf">
+			<div>
+				<img src="images/1.jpg" />
+			</div>
+			<div>
+				<img src="images/2.jpg" />
+			</div>
+			<div>
+				<img src="images/3.jpg" />
+			</div>
+			<div>
+				<img src="images/4.jpg" />
+			</div>
+			<div>
+				<img src="images/5.jpg" />
+			</div>
+			
+		</div>
+		</div>
+
+		<div id="three" style="margin-top: 40px; width: 100% ; height: 880px ; position:relative; background: url(images/2.jpg);">
+			<div id="three_overcontent">
+				<div class="three_fd">
+					<p style="font-size: 40px;">震撼全景体验，马上开始</p>
+					<p style="margin-top: 20px;font-size: 20px;">分享我们的生活</p>
+					<div id="three_img_one" style="margin-top: 20px;">
+						<img src="PanoCapture_20170822_100841.jpg" width="200px" height="120px" style="cursor: pointer;" onclick="test_fadeIn1()" />
+						<img src="PanoCapture_20170822_100944.jpg" width="200px" height="120px" style="cursor: pointer;margin-left: 25px;" onclick="test_fadeIn2()" />
+						<img src="PanoCapture_20170822_102109.jpg" width="200px" height="120px" style="cursor: pointer;margin-left: 25px;" onclick="test_fadeIn3()" />
+					</div>
+					<div id="three_img_two">
+						<img src="PanoCapture_20170822_101139.jpg" width="200px" height="120px" style="cursor: pointer;margin-top: 20px;" onclick="test_fadeIn4()" />
+					</div>
+				</div>
+
+			</div>
+			<div id="three_overfly" style="width: 800px;height: 600px;  top: 0; left: 0; bottom: 0; right: 0;  margin: auto;  
+                 position: absolute; display: none; ">
+				<a onclick="test_fadeOut()" style="float: right;cursor: pointer;">关闭</a>
+				<!--<canvas id="canvas" width="800" height="580" style="position:absolute;left:0;top:0;background-color: black;margin-top: 20px;">
+	                   </canvas>-->
+	                     <canvas id="canvas" style="position:absolute;width: 100%;height: 100%;margin-top: 20px;">
+                   </canvas>
+			</div>
+
+		</div>
+		
+		
+		
+		
+		<!--<div id="nowstart" style="width: 100%;height: 880px; ">
+	               <video controls preload="auto" style="width:100%; height:880px; object-fit:initial;" autoplay>
+						<source src="videos/startuse.mp4" type="video/mp4">
+					</video>
+		</div>-->
+
+		<!--浮动图片-->
+		<div id="four" style="width: 100% ; height: 800px;">
+			<div id="four_fd">
+				<div style="width: 70%;height: 100%; float: left;">
+					<!--<p style="font-size: 40px;color: black;">一键分享，实时直播</p>
+						     <p style="font-size: 40px;color:#8A8A8A;">分享我们的生活</p>-->
+					<div class="goods1">
+						<img src="images/qq.png" />
+						<!--<img src="images/weixin.png" />
+							     <img src="images/weibo.png" />
+							     <img src="images/sms.png" />-->
+					</div>
+					<div class="goods2">
+						<img src="images/weixin.png" />
+					</div>
+					<div>
+						<p style="font-size: 40px;color: black;text-align: center;">一键分享</p>
+						<p style="font-size: 18px;color:#8A8A8A;text-align: center;margin-top: 30px;">朋友圈从此与众不同</p>
+					</div>
+					<div class="goods3">
+						<img src="images/zone.png" />
+					</div>
+					<div class="goods4">
+						<img src="images/sms.png" />
+					</div>
+					<div class="goods5">
+						<img src="images/weibo.png" />
+					</div>
+				</div>
+				<div style="width: 30%;height: 100%;float: left;">
+					<img src="images/share.png" style="width: 100%;height: 100%;" />
+				</div>
+			</div>
+		</div>
+
+
+	
+
+     <div id="slider-container">
+
+	<div id="slider" class="nivoSlider">
+		<img title="#htmlcaption1" alt="" src="images/WechatIMG122.jpg">
+		<img title="#htmlcaption2" alt="" src="images/WechatIMG120.jpg">
+		<img title="#htmlcaption3" alt="" src="images/WechatIMG121.jpg">
+	
+	</div><!-- #slider -->
+	
+	<div id="htmlcaption1" class="nivo-html-caption">
+		<span class="sdate">Step one:</span>
+		<h1>分享生活  分享我的世界</h1>
+		<hr>
+		<p>打开要分享的照片 点击右上角的分享按钮  “一键分享”</p>
+	</div>
+	
+	<div id="htmlcaption2" class="nivo-html-caption">
+		<span class="sdate">Step two:</span>
+		<h1>分享生活  分享我的世界</h1>
+		<hr>
+		<p>输入想要分享的内容 点击“发送” </p>
+	</div>
+	
+	<div id="htmlcaption3" class="nivo-html-caption">
+		<span class="sdate">Step three:</span>
+		<h1>分享生活  分享我的世界</h1>
+		<hr>
+		<p>朋友通过微博就可以看到你分享的360全景照片 </p>
+	</div>
+	
+	
+	
+</div>
+
+	
+
+
+
+		
+		<div id="showmyphoto">
+			<div id="showmyphoto-one">
+				<img src="images/WechatIMG155.jpg" style="width: 100%;height: 880px;"/>
+			</div>
+		</div>
+		
+		
+		<div id="footer" >
+			Copyright@copy2017<br />
+			工作时间：周一到周五  9：00~17：30<br />
+			联系电话：0731-8088888
+		</div>
+		
+		
+		
+		<script language="JavaScript">
+			function aClick() {
+				document.getElementById("showvideo").style.display = 'block';
+			}
+
+			function aClickclose() {
+				document.getElementById("showvideo").style.display = 'none';
+			}
+
+			function test_fadeIn1() {
+				initTouchAndMouse("canvas");
+				panoviewer_need_binocular(false);
+				panoviewer_start("PanoCapture_20170822_100841.jpg", "canvas",800,580);
+				updateModel(2);
+				$("#three_overfly").fadeIn(2000, function() {});
+			}
+
+			function test_fadeIn2() {
+				initTouchAndMouse("canvas");
+				panoviewer_need_binocular(false);
+				panoviewer_start("PanoCapture_20170822_100944.jpg", "canvas", 800, 580);
+				updateModel(2);
+				$("#three_overfly").fadeIn(2000, function() {});
+			}
+
+			function test_fadeIn3() {
+				initTouchAndMouse("canvas");
+				panoviewer_need_binocular(false);
+				panoviewer_start("PanoCapture_20170822_102109.jpg", "canvas", 800, 580);
+				updateModel(2);
+				$("#three_overfly").fadeIn(2000, function() {});
+			}
+
+			function test_fadeIn4() {
+				initTouchAndMouse("canvas");
+				panoviewer_need_binocular(false);
+				panoviewer_start("PanoCapture_20170822_101139.jpg", "canvas", 800, 580);
+				updateModel(2);
+				$("#three_overfly").fadeIn(2000, function() {});
+			}
+
+			function test_fadeOut() {
+				$("#three_overfly").fadeOut(2000, function() {});
+			}
+		</script>
+
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+		
+		
+		
+		
+		
+		
+
+
+	</body>
+
+</html>
